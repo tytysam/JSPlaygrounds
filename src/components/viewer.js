@@ -1,12 +1,12 @@
-import _ from 'lodash';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import parseExpressions from 'selectors/parse_expressions';
-import SplitPane from 'react-split-pane';
+import _ from "lodash";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import parseExpressions from "../selectors/parse_expressions";
+import SplitPane from "react-split-pane";
 
 class Viewer extends Component {
   evaluateExpressions(expressions) {
-    const formattedExpressions = _.mapValues(expressions, expression => {
+    const formattedExpressions = _.mapValues(expressions, (expression) => {
       const result = eval(expression);
 
       if (result && result.type) {
@@ -14,7 +14,7 @@ class Viewer extends Component {
       } else if (_.isFunction(result) && result.name) {
         return <i>Function {result.name}</i>;
       } else if (_.isBoolean(result)) {
-        return result ? 'True' : 'False';
+        return result ? "True" : "False";
       } else if (_.isObject(result) || _.isArray(result)) {
         return JSON.stringify(result);
       }
@@ -22,9 +22,9 @@ class Viewer extends Component {
       return result;
     });
 
-    return _.map(formattedExpressions, (expression, line) =>
+    return _.map(formattedExpressions, (expression, line) => (
       <div>{expression}</div>
-    );
+    ));
   }
 
   renderExpressions(code) {
@@ -35,19 +35,19 @@ class Viewer extends Component {
     const defaultHeight = window.innerHeight / 1.3;
 
     return (
-      <SplitPane split="horizontal" defaultSize={defaultHeight} className="viewer">
-        <div className="result">
-          {this.renderExpressions(this.props.code)}
-        </div>
-        <div className="errors">
-          {this.props.errors}
-        </div>
+      <SplitPane
+        split="horizontal"
+        defaultSize={defaultHeight}
+        className="viewer"
+      >
+        <div className="result">{this.renderExpressions(this.props.code)}</div>
+        <div className="errors">{this.props.errors}</div>
       </SplitPane>
     );
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   let expressions, errors;
 
   try {

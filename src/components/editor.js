@@ -1,9 +1,9 @@
-import _ from 'lodash';
-import React, { Component } from 'react';
-import CodeMirror from 'react-codemirror';
-import 'codemirror/mode/jsx/jsx';
-import * as actions from 'actions';
-import { connect } from 'react-redux';
+import _ from "lodash";
+import React, { Component } from "react";
+import CodeMirror from "react-codemirror";
+import "codemirror/mode/jsx/jsx";
+import * as actions from "../actions";
+import { connect } from "react-redux";
 
 class Editor extends Component {
   onCodeChange(code) {
@@ -16,13 +16,14 @@ class Editor extends Component {
         <CodeMirror
           value={this.props.code}
           onChange={this.onCodeChange.bind(this)}
-          options={{ mode: 'jsx', lineNumbers: true, tabSize: 2 }} />
+          options={{ mode: "jsx", lineNumbers: true, tabSize: 2 }}
+        />
       </div>
     );
   }
 }
 
-function mapStateToProps({code}) {
+function mapStateToProps({ code }) {
   return { code };
 }
 
