@@ -1,9 +1,8 @@
 {
-  "name": "redux-simple-starter",
+  "name": "tcs-repl",
   "version": "1.0.0",
-  "description": "Simple starter package for Redux with React and Babel support",
+  "description": "Personal Read-Eval-Print-Loop Environment, based on Stephen Grider's JSPlaygrounds.",
   "main": "index.js",
-  "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
     "start": "webpack-dev-server --open chrome",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
